@@ -165,4 +165,6 @@ cython_debug/
 .AppleDouble
 .LSOverride
 
+### 제외 파일 ###
 *.ini
+*.ipynb
