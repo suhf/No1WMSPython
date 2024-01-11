@@ -1,21 +1,67 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+      input:read-only{
+          background-color: rgb(224, 222, 222);
+      }
+  </style>
+    <title>WMS</title>
+  </head>
+  
 <h2>WMS</h2>
 
 <form action="/method" method="POST">
   <label for="date">날짜</label>
-  <input type="text" id="date" name="date" value="{{date}}"><br><br>
-  <label for="warehouse_id">창고</label>
-  <input type="text" id="warehouse_id" name="warehouse_id" value="{{warehouse_id}}"><br><br>
-  <label for="name">제품명</label>
-  <input type="text" id="name" value="{{name}}"><br><br>
-  <label for="quantity">수량</label>
-  <input type="text" id="quantity" name="quantity" value="{{quantity}}"><br><br>
+  <input type="text" id="date" name="date" value="{{date}}" readonly><br><br>
+  <label for="wh_name">창고명</label>
+  <input type="text" id="wh_name" name="wh_name" value="{{wh_name}}" readonly><br><br>
+  <label for="pd_name">제품명</label>
+  <input type="text" id="pd_name" name="pd_name" value="{{pd_name}}" readonly><br><br>
+  <label for="quantity">제품수량</label>
+  <input type="number" id="quantity" min="0" name="quantity" value="{{quantity}}" readonly>
+
+  <button type="button" id="u-btn">수정</button>
+  <br><br>
+  <script> 
+    const ubtn = document.getElementById("u-btn");
+    ubtn.addEventListener('click', () => {
+      document.getElementById('quantity').readOnly = false;
+    });
+  </script>
 
   <input type="submit" value="확인">
-  <input type="submit" value="취소">
+  <input type="reset" value="취소">
+
+  <!-- <script>
+    $("#formInput").val();
+      let data = {};
+        data['컬럼명1'] = $("#id1").val();
+        data['컬럼명2'] = $("#id2").val();
+  
+    $.ajax({
+      type : 'post',           // 타입 (get, post, put 등등)
+      url : '/authority/create_process',           // 요청할 서버url
+      dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
+      data : data,
+      success : function(result) { // 결과 성공 콜백함수
+          alert(result);
+          if(result === 's'){
+              $("#authority_name").attr('disabled','true');
+          }else if(result === 'f'){
+              alert("이미 존재하는 권한 명 입니다");
+          }
+      },
+      error : function(request, status, error) {
+          alert(error)
+      }
+    });
+    </script> -->
 </form> 
 
 </body>
