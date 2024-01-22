@@ -19,8 +19,17 @@
 <form action="/method" method="POST">
   <label for="date">날짜</label>
   <input type="text" id="date" name="date" value="{{date}}" readonly><br><br>
+  <input hidden name="group_number" value="{{group_number}}">
+  <input hidden name="product_id" value="{{product_id}}">
+  <input hidden name="manager_id" value="{{manager_id}}">
+  <input hidden name="url" value="{{url}}">
   <label for="wh_name">창고명</label>
-  <input type="text" id="wh_name" name="wh_name" value="{{wh_name}}" readonly><br><br>
+  <select name="wh_name" width="300px">
+    {% for x in server_list %}
+      <option value="{{ x.id }}"{% if x.id == warehouse_id %} SELECTED{% endif %}>{{ x.name }}</option>
+    {% endfor %}
+  </select><br><br>
+  <!-- <input type="text" id="wh_name" name="wh_name" value="{{wh_name}}" readonly><br><br> -->
   <label for="pd_name">제품명</label>
   <input type="text" id="pd_name" name="pd_name" value="{{pd_name}}" readonly><br><br>
   <label for="quantity">제품수량</label>
