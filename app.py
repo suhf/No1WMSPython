@@ -159,7 +159,8 @@ def method():
     update_data(url)
     update_stock(warehouse_id, product_id, quantity)
     
-    return "POST로 전달된 데이터({}, {}, {}, {})".format(date, wh_name, quantity, pd_name)
+    return "입고 완료!"
+    # return "POST로 전달된 데이터({}, {}, {}, {})".format(date, wh_name, quantity, pd_name)
     # return render_template("form.html", date = row['date'], warehouse_id = row['warehouse_id'], quantity = row['quantity'])
 
 if __name__ == '__main__':
